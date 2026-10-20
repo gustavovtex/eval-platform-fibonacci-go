@@ -5,6 +5,9 @@ import (
 	"math/big"
 )
 
+// MaxSequenceLength is the longest sequence FibonacciSequence builds (specs/004-fibonacci-sequence).
+const MaxSequenceLength = 10000
+
 // MaxFibonacciInput is the largest n whose Fibonacci number fits in an int64.
 const MaxFibonacciInput = 92
 
@@ -49,4 +52,23 @@ func FibonacciBig(n int) (*big.Int, error) {
 		previous, current = current, previous
 	}
 	return current, nil
+}
+
+// FibonacciSequence returns [F(0), ..., F(count - 1)], built in one pass (specs/004-fibonacci-sequence).
+// Every call builds and returns a new slice of new values.
+func FibonacciSequence(count int) ([]*big.Int, error) {
+	if err := checkNonNegative("FibonacciSequence", count); err != nil {
+		return nil, err
+	}
+	if count > MaxSequenceLength {
+		return nil, fmt.Errorf("FibonacciSequence expects count <= %d, got %d: %w", MaxSequenceLength, count, ErrOutOfRange)
+	}
+	sequence := make([]*big.Int, 0, count)
+	previous, current := big.NewInt(0), big.NewInt(1)
+	for i := 0; i < count; i++ {
+		sequence = append(sequence, new(big.Int).Set(previous))
+		next := new(big.Int).Add(previous, current)
+		previous, current = current, next
+	}
+	return sequence, nil
 }
