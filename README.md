@@ -20,6 +20,7 @@ import (
 
 f, _ := numkit.Factorial(5)
 fmt.Println(f) // 120
+fmt.Println(numkit.Fibonacci(10)) // 55
 ```
 
 ## Tests
@@ -37,3 +38,4 @@ Every change starts with a spec in `specs/NNN-name/spec.md`.
 | Spec | Feature |
 |---|---|
 | [001-factorial](specs/001-factorial/spec.md) | `Factorial(n)` |
+| [002-fibonacci](specs/002-fibonacci/spec.md) | `Fibonacci(n)` |
