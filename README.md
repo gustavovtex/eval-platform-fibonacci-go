@@ -24,6 +24,8 @@ n, _ := numkit.Fibonacci(10)
 fmt.Println(n) // 55
 b, _ := numkit.FibonacciBig(100)
 fmt.Println(b) // 354224848179261915075
+s, _ := numkit.FibonacciSequence(5)
+fmt.Println(s) // [0 1 1 2 3]
 ```
 
 ## Tests
@@ -43,3 +45,4 @@ Every change starts with a spec in `specs/NNN-name/spec.md`.
 | [001-factorial](specs/001-factorial/spec.md) | `Factorial(n)` |
 | [002-fibonacci](specs/002-fibonacci/spec.md) | `Fibonacci(n)` |
 | [003-fibonacci-validation-bigint](specs/003-fibonacci-validation-bigint/spec.md) | input validation, `FibonacciBig(n)` |
+| [004-fibonacci-sequence](specs/004-fibonacci-sequence/spec.md) | `FibonacciSequence(count)` |
